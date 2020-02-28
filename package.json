@@ -1,0 +1,10 @@
+{
+    "name": "the-library",
+    "version": "2.0.0",
+    "description": "My personal pdf library",
+    "main": "test.js",
+    "dependencies": {
+        "jsdom": "^16.2.0",
+        "express": "^4.17.1"
+    }
+}
