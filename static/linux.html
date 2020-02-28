@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Library - Linux</title>
+    <link href="styling.css" rel="stylesheet">
+</head>
+
+<body>
+    <h1>Welcome to the Library</h1>
+    <h3>Linux Section</h3>
+    <ul id="nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="arduino.html">Arduino</a></li>
+        <li><a href="d&d.html">D&D</a></li>
+        <li><a href="electronics.html">Electronics</a></li>
+        <li><a href="linux.html">Linux</a></li>
+        <li><a href="misc.html">Miscellaneous</a></li>
+        <li><a href="programming.html">Programming</a></li>
+        <li><a href="raspberrypi.html">Raspberry Pi</a></li>
+    </ul>
+
+    <ul id="pdfs">
+        
+    </ul>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/trianglify/0.1.5/trianglify.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+    <script>
+        let hrefs = document.getElementsByClassName("pdf");
+        for (let i = 0; i < hrefs.length; i++) {
+            let href = hrefs[i];
+            for (let j = href.href.length; j > 0; j--) {
+                if (href.href[j] == '/') {
+                    let str = href.href.substring(j + 1, href.length);
+                    href.innerHTML = str;
+                    break;
+                }
+            }
+        }
+
+        // I took the code from your example site and messed with the parameters here
+        // set up variables to create dynamic background
+        let cellSize = Math.floor((Math.random() * 750) + 20);
+        let spectralID = Math.floor((Math.random() * 5) + 10);
+
+        //create dynamic background
+        polyBG(cellSize, spectralID);
+
+        function polyBG(cellSize, spectralID) {
+            let triangles = new Trianglify({
+                both_gradient: Trianglify.colorbrewer.Spectral[spectralID],
+                noiseIntensity: 0,
+                cellsize: cellSize
+            });
+            let pattern = triangles.generate(window.innerWidth, window.innerHeight + (window.innerHeight * 6));
+
+            document.body.setAttribute('style', 'background-image: ' + pattern.dataUrl);
+
+        }
+    </script>
+</body>
+
+</html>

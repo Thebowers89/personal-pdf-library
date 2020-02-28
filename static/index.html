@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Library - Home</title>
+    <link href="https://fonts.googleapis.com/css?family=Lacquer&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Odibee+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="styling.css" rel="stylesheet">
+</head>
+
+<body>
+    <h1>Welcome to the Library</h1>
+    <h3>Home Section</h3>
+    <ul id="nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="arduino.html">Arduino</a></li>
+        <li><a href="d&d.html">D&D</a></li>
+        <li><a href="electronics.html">Electronics</a></li>
+        <li><a href="linux.html">Linux</a></li>
+        <li><a href="misc.html">Miscellaneous</a></li>
+        <li><a href="programming.html">Programming</a></li>
+        <li><a href="raspberrypi.html">Raspberry Pi</a></li>
+    </ul>
+    <ul id="pdfs">
+        
+    </ul>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/trianglify/0.1.5/trianglify.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+    <script>
+        let hrefs = document.getElementsByClassName("pdf");
+        for (let i = 0; i < hrefs.length; i++) {
+            let href = hrefs[i];
+            for (let j = href.href.length; j > 0; j--) {
+                if (href.href[j] == '/') {
+                    let str = href.href.substring(j + 1, href.length);
+                    href.innerHTML = str;
+                    break;
+                }
+            }
+        }
+
+        // I took the code from your example site and messed with the parameters here
+        // set up variables to create dynamic background
+        let cellSize = Math.floor((Math.random() * 750) + 20);
+        let spectralID = Math.floor((Math.random() * 5) + 10);
+
+        //create dynamic background
+        polyBG(cellSize, spectralID);
+
+        function polyBG(cellSize, spectralID) {
+            let triangles = new Trianglify({
+                both_gradient: Trianglify.colorbrewer.Spectral[spectralID],
+                noiseIntensity: 0,
+                cellsize: cellSize
+            });
+            let pattern = triangles.generate(window.innerWidth, window.innerHeight + (window.innerHeight * 6));
+
+            document.body.setAttribute('style', 'background-image: ' + pattern.dataUrl);
+
+        }
+    </script>
+
+</body>
+
+</html>
+
+
+        <!-- <li><a class="pdf" href="/pdf_library.zip" download="">aaa</a></li>
+        <li><a class="pdf" href="/pdfs/absoluteopenbsd.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/adventuresinraspberrypi.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/arduinofordummies.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/arduinoprojecthandbook_vol1.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/arduinoprojectsfordummies.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/arduinosketches.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/assaultonblacktoothridge.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/assemblylanguagestep-by-step_programmingwithlinux.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/automatetheboringstuffwithpython_new.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/beaglebonefordummies.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/beginningcplusplusgameprogramming.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/beginninglinuxprogramming.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/beyonddamagedice_v2.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/blendermasterclass.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/bookofpf_ano-nonsenseguidetotheopenbsdfirewall.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/circuitbuildingdo_ityourself_fordummies.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/cleancodeinpython.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/cloudcomputingbasics_aselfteachingintroduction.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/completeelectronicsselfteachingguidewithprojects.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/comptialinuxplus_lpicpracticetests_examslx0-103_lpic-1101-400_lx0-104_lpic-1102.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/comptialinuxpluspoweredbylinuxprofessionalinstitutestudyguide_examslx0-103_lx0-104.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/cplusplushighperformance.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/cprogramming_aselfteachingintroduction.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/csharp71anddotnetcore20_moderncross-platformdevelopment.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/csharp7anddotnetcorecookbook.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/deepmagic_clockwork.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/doingmathwithpython.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/electronicsfordummies.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/expertpythonprogramming.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/exploringarduino.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/exploringbeaglebone.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/exploringraspberrypi.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/functionalpythonprogramming.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/gamedevelopmentusingpython.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/gamephysicscookbook.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/gocookbook.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/hdlwithdigitaldesign.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/howlinuxworks.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/java11cookbook.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/learningjavabybuildingandroidgames.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/learningjavascriptdatastructuresandalgorithms.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/learningpythonwithraspberrypi.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/learnjava12programming.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/linuxall-in-onefordummies.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/linuxbible.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/linuxcommandline_shellscriptingbible.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/linuxessentials.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/linuxserversecurity_hackanddefend.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/lpic-1_linuxprofessionalinstitutecertificationstudyguide_exams101_102.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/lpic-2_linuxprofessionalinstitutecertificationstudyguide_exams201_202.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/machinelearningfordevelopers.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/masteringsfmlgamedevelopment.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/microsoftoffice2013_365andbeyond.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/moderncplusplusprogrammingcookbook.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/multimediawebdesignanddevelopment.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/nostarch_summersampler_2018.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/perlone-liners.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/practicalgameaiprogramming.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/prepared_adozenadventuresfor5thedition.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/professionallinuxkernelarchitecture.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/python3objectorientedprogramming.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/pythonprogrammingblueprints.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/questsofdoom1_volume1.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/questsofdoom1_volume2.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/questsofdoom4_awakenings.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/raspberrypifordummies.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/raspberrypiprojectsfordummies.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/raspberrypiprojects_robinson.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/raspberrypiuserguide.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/redhatenterpriselinux6administration.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/roguesofremballo.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/sanctuaryofbelches.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/shellscripting_expertrecipesforlinuxbashandmore.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/slagheap.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/softwarearchitectshandbook.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/southlandsheroes.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/statisticsformachinelearning.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/theartistsguidetogimp.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/theartofdebuggingwithgdbdddandeclipse.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/thebookofgimp.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/thebookofgns3.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/thebookofinkscape.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/thebookoflostspells_5e.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/theborderlandsprovinces.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/thebraingorgersappetite.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/thegnumakebook.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/themoderncpluspluschallenge.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/themotherofallencountertables.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/theravenscall5e.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/therisingknight.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/thinklikeaprogrammer.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/ubuntulinuxtoolbox_1000pluscommandsforpowerusers.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/understandingsoftware.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/wickedcauldron.pdf" download=""></a></li>
+        <li><a class="pdf" href="/pdfs/wickedcoolshellscripts.pdf" download=""></a></li> -->

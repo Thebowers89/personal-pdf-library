@@ -1,0 +1,37 @@
+body {
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 20px;
+}
+
+a {
+    background-color: rgb(114, 211, 110);
+    border-radius: 20px;
+    color: black;
+    text-decoration: none;
+    margin: auto;
+    padding: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#pdfs > li {
+    list-style-type: none;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: auto;
+}
+
+#nav > li {
+    display: inline-block;
+    margin-top: 5px;
+}
+
+#nav > li > a {
+    background-color: rgb(30, 189, 115);
+}
+
+h1 {
+    margin: auto;
+}
